@@ -1,0 +1,37 @@
+#!/bin/bash
+rm ./work/Rvector.txt
+rm file_list.txt
+rm concentration_listright.txt
+rm wrong_list.txt
+rm right_list.txt
+find CHL/ -name "tempR.txt" > file_list.txt
+
+rootdir = $PWD
+
+for DIR in `cat file_list.txt`
+do
+	echo $DIR
+	if [ " $(cat ./$DIR | wc -l)" -ne 120 ]
+        then
+                echo ./$DIR >> $PWD/wrong_list.txt
+		echo Warning: ./$DIR not completed yet!
+        else
+
+                echo ./$DIR >> $PWD/right_list.txt
+                cat ./$DIR >> $PWD/work/Rvector.txt
+	        CHL="$(echo $DIR | cut -d/ -f2)"
+                SM="$(echo $DIR | cut -d/ -f4)"
+                CDOM="$(echo $DIR | cut -d/ -f6)"
+                echo $CHL $SM $CDOM 
+                echo $CHL $SM $CDOM >> $PWD/concentration_listright.txt
+
+	fi
+        let i++
+        echo $i
+
+done
+
+
+	
+
+

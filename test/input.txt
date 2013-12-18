@@ -1,0 +1,54 @@
+0,400,1000,.02,488,.00026,1,5.3
+
+OutputEL
+0,1,0,0,0,1
+2,1,0,2,3
+4,4
+0, 0.25, 0.25, 0.25,
+0,1,440,.1,.014
+0,0,440,.1,.014
+0,0,440,.2,.014
+0,0,440,.1,.014
+/home/jxc4005/hydrolight5Aaron_install/data/H2OabDefaults.txt
+/home/jxc4005/hydrolight5Aaron_install/data/ChloroAbs.txt
+/home/jxc4005/hydrolight5Aaron_install/data/CdomAbs.txt
+/home/jxc4005/hydrolight5Aaron_install/data/OopsSusMinAbs.txt
+4, 660, 0.189, 1, 0.751, -999
+0,-999,-999,-999,-999,-999
+-1,-999,0,-999,-999,-999
+0,-999,-999,-999,-999,-999
+bstarDummy.txt
+/home/jxc4005/hydrolight5Aaron_install/data/ChloroSct.txt
+dummybstar.txt
+/home/jxc4005/hydrolight5Aaron_install/data/OopsSusMinSct.txt
+0,0,0,0,0,0
+0,0,0,0,0,0
+0,0,0,0,0,0
+0,0,0,0,0,0
+pureh2o.dpf
+FFbb024.dpf
+isotrop.dpf
+FFbb026.dpf
+ 10
+400, 405, 410, 415, 420, 425, 430, 435, 440, 445,
+450,
+0,0,0,0,0
+3, 3, 15.51, 0, 0
+213,43.120,-77.67,29.92,1,80,2.5,15,3.99618,300
+4.99746,1.34,20,35
+0,0
+0, 7, 0, 5, 10, 15, 20, 25, 30,
+/home/jxc4005/hydrolight5Aaron_install/data/H2OabDefaults.txt
+1
+/home/jxc4005/hydrolight5Aaron_install/data/user/mascot_ac9.txt
+dummyFilteredAc9.txt
+dummyHscat.txt
+/home/jxc4005/hydrolight5Aaron_install/data/user/Chlzdata_10m.txt
+dummyComp.txt
+dummyR.bot
+dummydata.txt
+/home/jxc4005/hydrolight5Aaron_install/data/user/Chlzdata_10m.txt
+dummyComp.txt
+dummyComp.txt
+/home/jxc4005/hydrolight5Aaron_install/data/user/Ed_total.txt
+/home/jxc4005/hydrolight5Aaron_install/data/MyBiolumData.txt

@@ -1,0 +1,27 @@
+#!/bin/bash
+
+for CHL in `cat CHL_list.txt`
+do
+     	for SM in `cat SM_list.txt`
+	do
+		for CDOM in `cat CDOM_list.txt`
+		do
+			directory="/home/jxc4005/HYDROLIGHT/EL5.2/CHL/"$CHL"/SM/"$SM"/CDOM/"$CDOM		
+ 			mkdir -p $directory
+			echo $directory
+			echo $directory >> directory_list.txt
+			echo $CHL $SM $CDOM >> concentration_list.txt	
+			mkdir -p $directory/ref	
+			
+			let i++			
+			cat input.txt | sed 's"fla1"'$CHL'"g' | sed 's"fla2"'$CDOM'"g' | sed 's"fla3"'$SM'"g' > $directory/input.txt
+
+  			cat ELRun.sh | sed 's"flag"'$directory'"g' > $directory/ELRun.sh
+			#cp ./CommonInputs/* $directory/
+			sbatch --qos=cis-normal $directory/ELRun.sh
+
+			echo $i
+		done
+	done
+done 
+
