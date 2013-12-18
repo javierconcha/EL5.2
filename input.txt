@@ -1,7 +1,7 @@
 0,400,1000,.02,488,.00026,1,5.3
-
+First EL working correct and smooth
 OutputEL
-0,1,0,0,0,1
+0,0,0,0,0,1
 2,1,0,2,3
 4,4
 0,fla1,fla2,fla3
