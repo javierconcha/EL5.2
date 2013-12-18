@@ -36,8 +36,8 @@ cd flag
 
 /home/jxc4005/ecolight52_install/Code/Ecolight/mainEL_stnd.exe < ./input.txt
 
-awk 'c&&!--c;/Rrs \= Lw\/Ed/{c=3}' POutputEL.txt |awk '{ print $8 }'>tempRHL.txt
+awk 'c&&!--c;/Rrs \= Lw\/Ed/{c=3}' POutputEL.txt |awk '{ print $8 }'>tempR.txt
 
-mv tempRHL.txt ./ref/
+mv tempR.txt ./ref/
 #rm ./* 2> /dev/null
 #exit

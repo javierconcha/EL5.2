@@ -6,8 +6,6 @@ rm wrong_list.txt
 rm right_list.txt
 find CHL/ -name "tempR.txt" > file_list.txt
 
-rootdir = $PWD
-
 for DIR in `cat file_list.txt`
 do
 	echo $DIR
