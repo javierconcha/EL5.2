@@ -9,8 +9,8 @@ OutputEL
 0,0,440,.1,.014
 0,0,440,.2,.014
 0,0,440,.1,.014
+/home/jxc4005/hydrolight5Aaron_install/data/H2OabDefaults.txt
 /home/jxc4005/HYDROLIGHT/HL5.1/LUT1/CommonInputs/astarCHL091913.txt
-/home/jxc4005/hydrolight5Aaron_install/data/ChloroAbs.txt
 /home/jxc4005/hydrolight5Aaron_install/data/CdomAbs.txt
 /home/jxc4005/hydrolight5Aaron_install/data/OopsSusMinAbs.txt
 4, 660, 0.189, 1, 0.751, -999
