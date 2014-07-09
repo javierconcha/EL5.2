@@ -8,10 +8,10 @@ do
 	        echo "infinite loops [ hit CTRL+C to stop]"
         	# sleep 10
 		STOPTIME=$(date)
-		echo "Jobs Completed. Start:  $STARTTIME. Stop: $STOPTIME" | mail -s "Jobs Completed" jxc4005@rit.edu
+		echo "Start:  $STARTTIME. Stop: $STOPTIME" | mail -s "Jobs Completed" jxc4005@rit.edu
        		exit	
 	fi
-	sleep 15m
+	sleep 5m
 done
 
 

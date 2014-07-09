@@ -18,8 +18,8 @@
 #SBATCH -o ELRun.output
 #SBATCH -e ELRun.output
 
-# Request 5 hours run time MAX, anything over will be KILLED
-#SBATCH -t 5:0:0
+# Request 2 mins run time MAX, anything over will be KILLED
+#SBATCH -t 0:2:0
 
 # Put the job in the "work" partition and request FOUR cores
 # "work" is the default partition so it can be omitted without issue.
@@ -39,5 +39,5 @@ cd flag
 awk 'c&&!--c;/Rrs \= Lw\/Ed/{c=3}' POutputEL.txt |awk '{ print $8 }'>tempR.txt
 
 mv tempR.txt ./ref/
-#rm ./* 2> /dev/null
+rm ./* 2> /dev/null
 #exit
