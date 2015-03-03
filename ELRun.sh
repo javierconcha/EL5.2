@@ -39,5 +39,5 @@ cd flag
 awk 'c&&!--c;/Rrs \= Lw\/Ed/{c=3}' POutputEL.txt |awk '{ print $8 }'>tempR.txt
 
 mv tempR.txt ./ref/
-rm ./* 2> /dev/null
+#rm ./* 2> /dev/null
 #exit
