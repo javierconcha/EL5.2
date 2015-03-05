@@ -24,20 +24,21 @@ do
 		echo Warning: ./$DIR not completed yet and resubmitted!
 		
 		input=$SITE".txt"
-                cat $input | sed 's"site"'$SITE'"g' | sed 's"fla1"'$CHL'"g' | sed 's"fla2"'$CDOM'"g' | sed 's"fla3"'$SM'"g' | sed 's"user_dpfCHL"'$DPF'"g' | sed 's"user_dpfTSS"'$DPF'"g'  > $directory/input.txt
+                cat $input | sed 's"site"'$SITE'"g' | sed 's"flaCH"'$CHL'"g' | sed 's"flaCD"'$CDOM'"g' | sed 's"flaSM"'$SM'"g' | sed 's"user_dpfCHL"'$DPF'"g' | sed 's"user_dpfTSS"'$DPF'"g'  > $directory/input.txt
 
                  cat ELRun.sh | sed 's"flag"'$directory'"g' > $directory/ELRun.sh
                  #cp ./CommonInputs/* $directory/
                  #sbatch --qos=cis-normal $directory/ELRun.sh
-#                sbatch --qos=cis-nopreempt $directory/ELRun.sh
-                 sbatch --qos schott --partition premium $directory/ELRun.sh
-        	let j++
+		 #sbatch --qos=cis-nopreempt $directory/ELRun.sh
+                 #sbatch --qos schott --partition premium $directory/ELRun.sh
+        	 sbatch --qos free  --partition work --mem=100 $directory/ELRun.sh
+		 let j++
 	else
 
                 echo ./$DIR >> $PWD/right_list.txt
                 cat ./$DIR >> $PWD/work/Rvector.txt
                 echo $SITE $CHL $SM $CDOM $DPF>> $PWD/concentration_listright.txt
-
+                #rm $directory/* 2> /dev/null
 	fi
         let i++
         echo $i

@@ -17,7 +17,7 @@ do
                 echo $SITE $CHL $SM $CDOM $DPF
 		
 		input=$SITE".txt"
-                cat $input | sed 's"site"'$SITE'"g' | sed 's"fla1"'$CHL'"g' | sed 's"fla2"'$CDOM'"g' | sed 's"fla3"'$SM'"g' | sed 's"user_dpfCHL"'$DPF'"g' | sed 's"user_dpfTSS"'$DPF'"g'  > $DIR/input.txt
+                cat $input | sed 's"site"'$SITE'"g' | sed 's"flaCH"'$CHL'"g' | sed 's"flaCD"'$CDOM'"g' | sed 's"flaSM"'$SM'"g' | sed 's"user_dpfCHL"'$DPF'"g' | sed 's"user_dpfTSS"'$DPF'"g'  > $DIR/input.txt
 
                  cat ELRun.sh | sed 's"flag"'$DIR'"g' > $DIR/ELRun.sh
                  #cp ./CommonInputs/* $directory/

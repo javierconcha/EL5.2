@@ -26,8 +26,8 @@ do
   			cat ELRun.sh | sed 's"flag"'$directory'"g' > $directory/ELRun.sh
 			#cp ./CommonInputs/* $directory/
 			#sbatch --qos=cis-normal $directory/ELRun.sh
-			#sbatch --qos free --partition work $directory/ELRun.sh
-			sbatch --qos schott --partition premium $directory/ELRun.sh
+			sbatch --qos free --partition work --mem=100 $directory/ELRun.sh
+			#sbatch --qos schott --partition premium --mem=100 $directory/ELRun.sh
 			echo $i
 			done
 		done
