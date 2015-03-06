@@ -2,21 +2,24 @@
 #rm directory_list.txt
 #rm input_list.txt
 #rm -r output/
+	for SITE in `cat SITE_list.txt`
+	do
 		for DPFCHL in `cat dpf_listCHL.txt`
 		do
-			#for DPFTSS in `cat dpf_listTSS.txt`
-			#do
-				#directory="/home/jxc4005/HYDROLIGHT/EL5.2/dpfdet/output4/"$DPFCHL"/"$DPFTSS
-				directory="/home/jxc4005/HYDROLIGHT/EL5.2/dpfdet/output/"$DPFCHL
+			for DPFTSS in `cat dpf_listTSS.txt`
+			do
+				directory="/home/jxc4005/HYDROLIGHT/EL5.2/dpfdet/SITE/"$SITE"/DPFCHL/"$DPFCHL"/DPFTSS/"$DPFTSS
+				#directory="/home/jxc4005/HYDROLIGHT/EL5.2/dpfdet/output/"$DPFCHL
  				mkdir -p $directory
 				echo $directory
-				echo $directory >> directory_listtxt
+				echo $directory >> directory_list.txt
 				#echo $DPFCHL $DPFTSS >> input_list.txt
 				echo $DPFCHL >> input_list.txt
 				mkdir -p $directory/ref
 			
 				let i++
-				cat input.txt| sed 's"user_dpfCHL"'$DPFCHL'"g' | sed 's"user_dpfTSS"'$DPFTSS'"g' > $directory/input.txt
+				input=$SITE".txt"
+				cat $input| sed 's"site"'$SITE'"g' | sed 's"user_dpfCHL"'$DPFCHL'"g' | sed 's"user_dpfTSS"'$DPFTSS'"g' > $directory/input.txt
   				#cat input.txt| sed 's"user_dpfCHL"'$DPFCHL'"g' | sed 's"user_dpfTSS"'$DPFCHL'"g' > $directory/input.txt
 					
 				cat ELRun.sh | sed 's"flag"'$directory'"g' > $directory/ELRun.sh
@@ -25,7 +28,7 @@
 				#sbatch --qos=cis-nopreempt $directory/ELRun.sh			
 				sbatch --qos schott --partition premium --mem=1000 $directory/ELRun.sh		
 				echo $i
-			#done
+			done
 		done
-
+	done
 nohup nice ./monitor.sh > nohup.out &

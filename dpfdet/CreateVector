@@ -1,0 +1,50 @@
+#!/bin/bash
+rm ./work/Rvector.txt
+rm file_list.txt
+rm concentration_listright.txt
+rm wrong_list.txt
+rm right_list.txt
+find SITE/ -name "tempR.txt" > file_list.txt
+
+for DIR in `cat file_list.txt`
+do
+	echo $DIR
+        SITE="$(echo $DIR | cut -d/ -f2)"
+        DPFCHL="$(echo $DIR | cut -d/ -f4)"
+        DPFTSS="$(echo $DIR | cut -d/ -f6)"
+        echo $SITE $DPFCHL $DPFTSS
+	directory="/home/jxc4005/HYDROLIGHT/EL5.2/dpfdet/SITE/"$SITE"/DPFCHL/"$DPFCHL"/DPFTSS/"$DPFTSS
+	if [ " $(cat ./$DIR | wc -l)" -ne 120 ]
+        then
+                echo ./$DIR >> $PWD/wrong_list.txt
+		echo Warning: ./$DIR not completed yet and resubmitted!
+		
+		input=$SITE".txt"
+		cat $input| sed 's"site"'$SITE'"g' | sed 's"user_dpfCHL"'$DPFCHL'"g' | sed 's"user_dpfTSS"'$DPFTSS'"g' > $directory/input.txt
+                cat ELRun.sh | sed 's"flag"'$directory'"g' > $directory/ELRun.sh
+                #cp ./CommonInputs/* $directory/
+                #sbatch --qos=cis-normal $directory/ELRun.sh
+		#sbatch --qos=cis-nopreempt $directory/ELRun.sh
+                #sbatch --qos schott --partition premium $directory/ELRun.sh
+        	sbatch --qos free  --partition work --mem=100 $directory/ELRun.sh
+		let j++
+	else
+
+                echo ./$DIR >> $PWD/right_list.txt
+                cat ./$DIR >> $PWD/work/Rvector.txt
+                echo $SITE $DPFCHL $DPFTSS>> $PWD/concentration_listright.txt
+                #rm $directory/* 2> /dev/null
+	fi
+        let i++
+        echo $i
+
+done
+echo Jobs completed correctly: $(cat ./right_list.txt|wc -l)
+echo Jobs not completed and resubmitted: $j
+
+if [ "$(cat ./wrong_list.txt|wc -l)" -ne 0 ]
+then
+        nohup nice ./monitor.sh > nohup.out &
+else    
+        exit    
+fi
