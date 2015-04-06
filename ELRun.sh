@@ -19,7 +19,7 @@
 #SBATCH -e ELRun.output
 
 # Request 2 mins run time MAX, anything over will be KILLED
-#SBATCH -t 0:2:0
+#SBATCH -t 0:5:0
 
 # Put the job in the "work" partition and request FOUR cores
 # "work" is the default partition so it can be omitted without issue.

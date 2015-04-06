@@ -5,6 +5,7 @@ rm concentration_listright.txt
 rm wrong_list.txt
 rm right_list.txt
 find SITE/ -name "tempR.txt" > file_list.txt
+j=0
 
 for DIR in `cat file_list.txt`
 do
@@ -27,7 +28,6 @@ do
                 cat $input | sed 's"site"'$SITE'"g' | sed 's"flaCH"'$CHL'"g' | sed 's"flaCD"'$CDOM'"g' | sed 's"flaSM"'$SM'"g' | sed 's"user_dpfCHL"'$DPF'"g' | sed 's"user_dpfTSS"'$DPF'"g'  > $directory/input.txt
 
                  cat ELRun.sh | sed 's"flag"'$directory'"g' > $directory/ELRun.sh
-                 #cp ./CommonInputs/* $directory/
                  #sbatch --qos=cis-normal $directory/ELRun.sh
 		 #sbatch --qos=cis-nopreempt $directory/ELRun.sh
                  #sbatch --qos schott --partition premium $directory/ELRun.sh
@@ -47,5 +47,9 @@ done
 echo Jobs completed correctly: $(cat ./right_list.txt|wc -l)
 echo Jobs not completed and resubmitted: $j
 
-nohup nice ./monitor.sh > nohup.out &
-
+if [ "$j" -ne 0 ]
+then
+	nohup nice ./monitor.sh > nohup.out &
+else
+	exit
+fi

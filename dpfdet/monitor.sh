@@ -2,7 +2,7 @@
 STARTTIME=$(date)
 while :
 do
-	if [ $(squeue -u jxc4005|grep ELRun|wc -l) -eq 0 ]
+	if [ $(squeue -u jxc4005|grep ELRun|wc -l) -eq 0 ] && [ $(squeue -u jxc4005|grep HLRun|wc -l) -eq 0 ]
 	then
 
 	        echo "infinite loops [ hit CTRL+C to stop]"

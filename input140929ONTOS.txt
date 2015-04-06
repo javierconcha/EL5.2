@@ -1,7 +1,7 @@
 0,400,2500,.02,488,.00026,1,5.3
 FFbb determination for ONTOS
 OutputEL
-0,0,0,0,0,1
+0,1,0,0,0,1
 2,1,0,2,3
 4,4
 0,flaCH,flaCD,flaSM
