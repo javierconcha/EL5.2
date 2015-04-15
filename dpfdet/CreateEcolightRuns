@@ -1,34 +1,37 @@
 #!/bin/bash
-#rm directory_list.txt
-#rm input_list.txt
-#rm -r output/
-	for SITE in `cat SITE_list.txt`
+rm directory_list.txt
+rm input_list.txt
+rm concentration_list.txt
+rm -r SITE/
+
+for SITE in `cat SITE_list.txt`
+do
+	for DPFCHL in `cat dpf_listCHL.txt`
 	do
-		for DPFCHL in `cat dpf_listCHL.txt`
-		do
-			for DPFTSS in `cat dpf_listTSS.txt`
-			do
-				directory="/home/jxc4005/HYDROLIGHT/EL5.2/dpfdet/SITE/"$SITE"/DPFCHL/"$DPFCHL"/DPFTSS/"$DPFTSS
-				#directory="/home/jxc4005/HYDROLIGHT/EL5.2/dpfdet/output/"$DPFCHL
- 				mkdir -p $directory
-				echo $directory
-				echo $directory >> directory_list.txt
-				#echo $DPFCHL $DPFTSS >> input_list.txt
-				echo $DPFCHL >> input_list.txt
-				mkdir -p $directory/ref
-			
-				let i++
-				input=$SITE".txt"
-				cat $input| sed 's"site"'$SITE'"g' | sed 's"user_dpfCHL"'$DPFCHL'"g' | sed 's"user_dpfTSS"'$DPFTSS'"g' > $directory/input.txt
-  				#cat input.txt| sed 's"user_dpfCHL"'$DPFCHL'"g' | sed 's"user_dpfTSS"'$DPFCHL'"g' > $directory/input.txt
-					
-				cat ELRun.sh | sed 's"flag"'$directory'"g' > $directory/ELRun.sh
-				chmod 755 $directory/ELRun.sh
-				#sbatch --qos=cis-normal $directory/ELRun.sh
-				#sbatch --qos=cis-nopreempt $directory/ELRun.sh			
-				sbatch --qos schott --partition premium --mem=1000 $directory/ELRun.sh		
-				echo $i
-			done
-		done
+		#for DPFTSS in `cat dpf_listTSS.txt`
+		#do
+			directory="/home/jxc4005/HYDROLIGHT/EL5.2/dpfdet/SITE/"$SITE"/DPFCHL/"$DPFCHL"/DPFTSS/"$DPFCHL
+			#directory="/home/jxc4005/HYDROLIGHT/EL5.2/dpfdet/output/"$DPFCHL
+ 			mkdir -p $directory
+			echo $directory
+			echo $directory >> directory_list.txt
+			#echo $SITE $DPFCHL >> concentration_list.txt
+			echo $SITE $DPFCHL $DPFTSS >> concentration_list.txt
+			mkdir -p $directory/ref
+		
+			let i++
+			input=$SITE".txt"
+			cat $input| sed 's"site"'$SITE'"g' | sed 's"user_dpfCHL"'$DPFCHL'"g' | sed 's"user_dpfTSS"'$DPFCHL'"g' > $directory/input.txt
+  			#cat input.txt| sed 's"user_dpfCHL"'$DPFCHL'"g' | sed 's"user_dpfTSS"'$DPFCHL'"g' > $directory/input.txt
+				
+			cat ELRun.sh | sed 's"flag"'$directory'"g' > $directory/ELRun.sh
+			chmod 755 $directory/ELRun.sh
+			#sbatch --qos=cis-normal $directory/ELRun.sh
+			#sbatch --qos=cis-nopreempt $directory/ELRun.sh			
+			sbatch --qos schott --partition premium --mem=12 $directory/ELRun.sh		
+			echo $i
+		#done
 	done
+done
+
 nohup nice ./monitor.sh > nohup.out &

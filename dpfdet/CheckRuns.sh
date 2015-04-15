@@ -22,7 +22,7 @@ do
 		#cp ./CommonInputs/* $directory/
                 #sbatch --qos=cis-normal $directory/ELRun.sh
 #               sbatch --qos=cis-nopreempt $directory/ELRun.sh
-                sbatch --qos schott --partition premium --mem=1000 $DIR/ELRun.sh
+                sbatch --qos schott --partition premium --mem=12 $DIR/ELRun.sh
 	fi
 	let i++
 	echo $i
