@@ -16,7 +16,7 @@ do
 			echo $directory
 			echo $directory >> directory_list.txt
 			#echo $SITE $DPFCHL >> concentration_list.txt
-			echo $SITE $DPFCHL $DPFTSS >> concentration_list.txt
+			echo $SITE $DPFCHL $DPCHL >> concentration_list.txt
 			mkdir -p $directory/ref
 		
 			let i++
