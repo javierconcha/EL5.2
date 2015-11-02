@@ -1,4 +1,5 @@
 #!/bin/bash
+# to run it: nohup nice ./monitor.sh > nohup.out & 
 STARTTIME=$(date)
 while :
 do
