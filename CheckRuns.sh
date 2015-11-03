@@ -1,12 +1,13 @@
 #!/bin/bash
 rm notsubmitted_list.txt
-
+i=1
 for DIR in `cat directory_list.txt`
 do
-	if [ -f "$DIR/ref/tempR.txt" ]
+	if [ ! -f "$DIR/ref/tempR.txt" ]
+	#then
+	#	echo "$DIR/ref/tempR.txt found."
+	#else
 	then
-		echo "$DIR/ref/tempR.txt found."
-	else
 		echo "$DIR/ref/tempR.txt not found."
 		echo $DIR >> $PWD/notsubmitted_list.txt
 		SITE="$(echo $DIR | cut -d/ -f7)"
@@ -23,17 +24,18 @@ do
                  #cp ./CommonInputs/* $directory/
                  #sbatch --qos=cis-normal $directory/ELRun.sh
 #                sbatch --qos=cis-nopreempt $directory/ELRun.sh
-                 sbatch --qos schott --partition premium --mem=1000  $DIR/ELRun.sh
-
+                sbatch --qos free --partition work --mem=12 $DIR/ELRun.sh 
+		#sbatch --qos schott --partition premium --mem=12  $DIR/ELRun.sh
+		echo $i
 	fi
 	let i++
-	echo $i
+	#echo $i
 done
 echo Jobs not completed: $(cat ./notsubmitted_list.txt|wc -l)
 
 if [ "$(cat ./notsubmitted_list.txt|wc -l)" -ne 0 ]
 then
-	nohup nice ./monitor.sh > nohup.out &
+	nohup nice ./monitor.sh 2> nohup.out &
 else
 	exit
 fi

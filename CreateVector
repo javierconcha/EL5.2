@@ -31,7 +31,7 @@ do
                  #sbatch --qos=cis-normal $directory/ELRun.sh
 		 #sbatch --qos=cis-nopreempt $directory/ELRun.sh
                  #sbatch --qos schott --partition premium $directory/ELRun.sh
-        	 sbatch --qos free  --partition work --mem=100 $directory/ELRun.sh
+        	 sbatch --qos free  --partition work --mem=12 $directory/ELRun.sh
 		 let j++
 	else
 
@@ -49,7 +49,7 @@ echo Jobs not completed and resubmitted: $j
 
 if [ "$j" -ne 0 ]
 then
-	nohup nice ./monitor.sh > nohup.out &
+	nohup nice ./monitor.sh 2> nohup.out &
 else
 	exit
 fi

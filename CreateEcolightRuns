@@ -36,4 +36,4 @@ do
 done
 done 
 
-nohup nice ./monitor.sh > nohup.out &
+nohup nice ./monitor.sh 2> nohup.out &
