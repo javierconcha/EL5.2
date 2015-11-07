@@ -1,0 +1,33 @@
+# The following file is a scattering cross section for sediments taken from
+# Bukata [1991]
+#
+# The respective columns are wavelength [nanometers] and specific 
+# scattering [m^2/mg]
+#
+#
+#
+#
+#wavelength     coef
+400	0.675
+410	0.65
+420	0.635
+430	0.62
+440	0.6075
+450	0.6
+460	0.595
+470	0.59
+480	0.588
+490	0.587
+500	0.585
+510	0.584
+520	0.5835
+530	0.582
+540	0.5815
+550	0.581
+560	0.5815
+570	0.5825
+580	0.5805
+590	0.5775
+600	0.5675
+700	0.405
+-1 -1
