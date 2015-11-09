@@ -28,10 +28,10 @@ do
 			chmod 755 $directory/ELRun.sh
 			#sbatch --qos=cis-normal $directory/ELRun.sh
 			#sbatch --qos=cis-nopreempt $directory/ELRun.sh			
-			sbatch --qos schott --partition premium --mem=12 $directory/ELRun.sh		
+			sbatch --qos free --partition work --mem=12 $directory/ELRun.sh		
 			echo $i
 		#done
 	done
 done
 
-nohup nice ./monitor.sh > nohup.out &
+nohup nice ./monitor.sh 2> nohup.out &
