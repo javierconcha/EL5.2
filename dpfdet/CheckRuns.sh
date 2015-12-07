@@ -22,7 +22,7 @@ do
 		#cp ./CommonInputs/* $directory/
                 #sbatch --qos=cis-normal $directory/ELRun.sh
 #               sbatch --qos=cis-nopreempt $directory/ELRun.sh
-                sbatch --qos schott --partition premium --mem=12 $DIR/ELRun.sh
+                sbatch --qos free --partition work --mem=12 $DIR/ELRun.sh
 	fi
 	let i++
 	echo $i
@@ -31,7 +31,7 @@ echo Jobs not completed: $(cat ./notsubmitted_list.txt|wc -l)
 
 if [ "$(cat ./notsubmitted_list.txt|wc -l)" -ne 0 ]
 then
-	nohup nice ./monitor.sh > nohup.out &
+	nohup nice ./monitor.sh 2> nohup.out &
 else
 	exit
 fi

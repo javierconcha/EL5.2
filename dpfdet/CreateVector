@@ -43,7 +43,7 @@ echo Jobs not completed and resubmitted: $j
 
 if [ "$(cat ./wrong_list.txt|wc -l)" -ne 0 ]
 then
-        nohup nice ./monitor.sh > nohup.out &
+        nohup nice ./monitor.sh 2> nohup.out &
 else    
         exit    
 fi
