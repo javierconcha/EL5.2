@@ -10,7 +10,8 @@ do
         	# sleep 10
 		STOPTIME=$(date)
 		echo "Start:  $STARTTIME. Stop: $STOPTIME" | mail -s "Jobs Completed" jxc4005@rit.edu
-       		exit	
+       		./CheckRuns.sh
+		exit	
 	fi
 	sleep 5m
 done
